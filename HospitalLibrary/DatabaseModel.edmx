@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="hospitalModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="card">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="age" Type="int" Nullable="false" />
+          <Property Name="sex" Type="enum" Nullable="false" />
+          <Property Name="note" Type="text" />
+          <Property Name="isAgain" Type="binary" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="diagnosis">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="group_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="groups">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="group_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="notes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="card_id" Type="int" Nullable="false" />
+          <Property Name="hide" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="date" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hidden_note" Type="text" />
+        </EntityType>
+        <EntityType Name="session">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="card_id" Type="int" Nullable="false" />
+          <Property Name="result" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="diagnosis_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="access_level" Type="int" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <Association Name="Diagnosis-GroupOwner">
+          <End Role="groups" Type="Self.groups" Multiplicity="1" />
+          <End Role="diagnosis" Type="Self.diagnosis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="diagnosis">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GroupOwner">
+          <End Role="groups" Type="Self.groups" Multiplicity="1" />
+          <End Role="groups1" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="groups1">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Notes-Cars">
+          <End Role="card" Type="Self.card" Multiplicity="1" />
+          <End Role="notes" Type="Self.notes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="card">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="notes">
+              <PropertyRef Name="card_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Notes-Users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="notes" Type="Self.notes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="notes">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Sessions-Cards">
+          <End Role="card" Type="Self.card" Multiplicity="1" />
+          <End Role="session" Type="Self.session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="card">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="session">
+              <PropertyRef Name="card_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Sessions-Diagnosis">
+          <End Role="diagnosis" Type="Self.diagnosis" Multiplicity="1" />
+          <End Role="session" Type="Self.session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="diagnosis">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="session">
+              <PropertyRef Name="diagnosis_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="hospitalModelStoreContainer">
+          <EntitySet Name="card" EntityType="Self.card" Schema="hospital" store:Type="Tables" />
+          <EntitySet Name="diagnosis" EntityType="Self.diagnosis" Schema="hospital" store:Type="Tables" />
+          <EntitySet Name="groups" EntityType="Self.groups" Schema="hospital" store:Type="Tables" />
+          <EntitySet Name="notes" EntityType="Self.notes" Schema="hospital" store:Type="Tables" />
+          <EntitySet Name="session" EntityType="Self.session" Schema="hospital" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="hospital" store:Type="Tables" />
+          <AssociationSet Name="Diagnosis-GroupOwner" Association="Self.Diagnosis-GroupOwner">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="diagnosis" EntitySet="diagnosis" />
+          </AssociationSet>
+          <AssociationSet Name="GroupOwner" Association="Self.GroupOwner">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="groups1" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="Notes-Cars" Association="Self.Notes-Cars">
+            <End Role="card" EntitySet="card" />
+            <End Role="notes" EntitySet="notes" />
+          </AssociationSet>
+          <AssociationSet Name="Notes-Users" Association="Self.Notes-Users">
+            <End Role="users" EntitySet="users" />
+            <End Role="notes" EntitySet="notes" />
+          </AssociationSet>
+          <AssociationSet Name="Sessions-Cards" Association="Self.Sessions-Cards">
+            <End Role="card" EntitySet="card" />
+            <End Role="session" EntitySet="session" />
+          </AssociationSet>
+          <AssociationSet Name="Sessions-Diagnosis" Association="Self.Sessions-Diagnosis">
+            <End Role="diagnosis" EntitySet="diagnosis" />
+            <End Role="session" EntitySet="session" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="hospitalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Card">
+          <Key>
+            <PropertyRef Name="CardID" />
+          </Key>
+          <Property Name="CardID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PatientAge" Type="Int32" Nullable="false" />
+          <Property Name="Sex" Type="String" MaxLength="65532" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="IsAgain" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="notes" Relationship="Self.Notes_Cars" FromRole="card" ToRole="notes" />
+          <NavigationProperty Name="sessions" Relationship="Self.Sessions_Cards" FromRole="card" ToRole="session" />
+        </EntityType>
+        <EntityType Name="Diagnosis">
+          <Key>
+            <PropertyRef Name="DiagnosisID" />
+          </Key>
+          <Property Name="DiagnosisID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GroupOwnerID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="group" Relationship="Self.Diagnosis_GroupOwner" FromRole="diagnosis" ToRole="groups" />
+          <NavigationProperty Name="sessions" Relationship="Self.Sessions_Diagnosis" FromRole="diagnosis" ToRole="session" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GroupOwnerID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="diagnosis" Relationship="Self.Diagnosis_GroupOwner" FromRole="groups" ToRole="diagnosis" />
+          <NavigationProperty Name="groups1" Relationship="Self.GroupOwner" FromRole="groups" ToRole="groups1" />
+          <NavigationProperty Name="group1" Relationship="Self.GroupOwner" FromRole="groups1" ToRole="groups" />
+        </EntityType>
+        <EntityType Name="Note">
+          <Key>
+            <PropertyRef Name="NoteID" />
+          </Key>
+          <Property Name="NoteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="CardID" Type="Int32" Nullable="false" />
+          <Property Name="IsHidden" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoteText" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="card" Relationship="Self.Notes_Cars" FromRole="notes" ToRole="card" />
+          <NavigationProperty Name="user" Relationship="Self.Notes_Users" FromRole="notes" ToRole="users" />
+        </EntityType>
+        <EntityType Name="Session">
+          <Key>
+            <PropertyRef Name="SessionID" />
+          </Key>
+          <Property Name="SessionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CardID" Type="Int32" Nullable="false" />
+          <Property Name="TreatmentResult" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="DiagnosisID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="card" Relationship="Self.Sessions_Cards" FromRole="session" ToRole="card" />
+          <NavigationProperty Name="diagnosi" Relationship="Self.Sessions_Diagnosis" FromRole="session" ToRole="diagnosis" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AccessLevel" Type="Int32" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="notes" Relationship="Self.Notes_Users" FromRole="users" ToRole="notes" />
+        </EntityType>
+        <Association Name="Notes_Cars">
+          <End Role="card" Type="hospitalModel.Card" Multiplicity="1" />
+          <End Role="notes" Type="hospitalModel.Note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="card">
+              <PropertyRef Name="CardID" />
+            </Principal>
+            <Dependent Role="notes">
+              <PropertyRef Name="CardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Sessions_Cards">
+          <End Role="card" Type="hospitalModel.Card" Multiplicity="1" />
+          <End Role="session" Type="hospitalModel.Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="card">
+              <PropertyRef Name="CardID" />
+            </Principal>
+            <Dependent Role="session">
+              <PropertyRef Name="CardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Diagnosis_GroupOwner">
+          <End Role="groups" Type="hospitalModel.Group" Multiplicity="1" />
+          <End Role="diagnosis" Type="hospitalModel.Diagnosis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="diagnosis">
+              <PropertyRef Name="GroupOwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Sessions_Diagnosis">
+          <End Role="diagnosis" Type="hospitalModel.Diagnosis" Multiplicity="1" />
+          <End Role="session" Type="hospitalModel.Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="diagnosis">
+              <PropertyRef Name="DiagnosisID" />
+            </Principal>
+            <Dependent Role="session">
+              <PropertyRef Name="DiagnosisID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GroupOwner">
+          <End Role="groups" Type="hospitalModel.Group" Multiplicity="1" />
+          <End Role="groups1" Type="hospitalModel.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="groups1">
+              <PropertyRef Name="GroupOwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Notes_Users">
+          <End Role="users" Type="hospitalModel.User" Multiplicity="1" />
+          <End Role="notes" Type="hospitalModel.Note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="notes">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HospitalEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cards" EntityType="hospitalModel.Card" />
+          <EntitySet Name="diagnosis" EntityType="hospitalModel.Diagnosis" />
+          <EntitySet Name="groups" EntityType="hospitalModel.Group" />
+          <EntitySet Name="notes" EntityType="hospitalModel.Note" />
+          <EntitySet Name="sessions" EntityType="hospitalModel.Session" />
+          <EntitySet Name="users" EntityType="hospitalModel.User" />
+          <AssociationSet Name="Notes_Cars" Association="Self.Notes_Cars">
+            <End Role="card" EntitySet="cards" />
+            <End Role="notes" EntitySet="notes" />
+          </AssociationSet>
+          <AssociationSet Name="Sessions_Cards" Association="Self.Sessions_Cards">
+            <End Role="card" EntitySet="cards" />
+            <End Role="session" EntitySet="sessions" />
+          </AssociationSet>
+          <AssociationSet Name="Diagnosis_GroupOwner" Association="Self.Diagnosis_GroupOwner">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="diagnosis" EntitySet="diagnosis" />
+          </AssociationSet>
+          <AssociationSet Name="Sessions_Diagnosis" Association="Self.Sessions_Diagnosis">
+            <End Role="diagnosis" EntitySet="diagnosis" />
+            <End Role="session" EntitySet="sessions" />
+          </AssociationSet>
+          <AssociationSet Name="GroupOwner" Association="Self.GroupOwner">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="groups1" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="Notes_Users" Association="Self.Notes_Users">
+            <End Role="users" EntitySet="users" />
+            <End Role="notes" EntitySet="notes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="hospitalModelStoreContainer" CdmEntityContainer="HospitalEntities1">
+          <EntitySetMapping Name="cards">
+            <EntityTypeMapping TypeName="hospitalModel.Card">
+              <MappingFragment StoreEntitySet="card">
+                <ScalarProperty Name="CardID" ColumnName="id" />
+                <ScalarProperty Name="PatientName" ColumnName="name" />
+                <ScalarProperty Name="PatientAge" ColumnName="age" />
+                <ScalarProperty Name="Sex" ColumnName="sex" />
+                <ScalarProperty Name="Note" ColumnName="note" />
+                <ScalarProperty Name="IsAgain" ColumnName="isAgain" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="diagnosis">
+            <EntityTypeMapping TypeName="hospitalModel.Diagnosis">
+              <MappingFragment StoreEntitySet="diagnosis">
+                <ScalarProperty Name="DiagnosisID" ColumnName="id" />
+                <ScalarProperty Name="Description" ColumnName="description" />
+                <ScalarProperty Name="GroupOwnerID" ColumnName="group_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="groups">
+            <EntityTypeMapping TypeName="hospitalModel.Group">
+              <MappingFragment StoreEntitySet="groups">
+                <ScalarProperty Name="GroupID" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="GroupOwnerID" ColumnName="group_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="notes">
+            <EntityTypeMapping TypeName="hospitalModel.Note">
+              <MappingFragment StoreEntitySet="notes">
+                <ScalarProperty Name="NoteID" ColumnName="id" />
+                <ScalarProperty Name="UserID" ColumnName="user_id" />
+                <ScalarProperty Name="CardID" ColumnName="card_id" />
+                <ScalarProperty Name="IsHidden" ColumnName="hide" />
+                <ScalarProperty Name="Date" ColumnName="date" />
+                <ScalarProperty Name="NoteText" ColumnName="hidden_note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sessions">
+            <EntityTypeMapping TypeName="hospitalModel.Session">
+              <MappingFragment StoreEntitySet="session">
+                <ScalarProperty Name="SessionID" ColumnName="id" />
+                <ScalarProperty Name="CardID" ColumnName="card_id" />
+                <ScalarProperty Name="TreatmentResult" ColumnName="result" />
+                <ScalarProperty Name="DiagnosisID" ColumnName="diagnosis_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="hospitalModel.User">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="UserID" ColumnName="id" />
+                <ScalarProperty Name="UserName" ColumnName="name" />
+                <ScalarProperty Name="AccessLevel" ColumnName="access_level" />
+                <ScalarProperty Name="Phone" ColumnName="phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
