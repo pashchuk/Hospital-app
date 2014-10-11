@@ -19,8 +19,8 @@ namespace HospitalLibrary
             this.notes = new HashSet<Note>();
         }
     
-        public int UserID { get; set; }
-        public string UserName { get; set; }
+        public int UserID { get; private set; }
+        public string Name { get; set; }
         public int AccessLevel { get; set; }
         public string Phone { get; set; }
     

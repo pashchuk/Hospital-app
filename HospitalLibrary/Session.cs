@@ -14,9 +14,9 @@ namespace HospitalLibrary
     
     public partial class Session
     {
-        public int SessionID { get; set; }
+        public int SessionID { get; private set; }
         public int CardID { get; set; }
-        public byte[] TreatmentResult { get; set; }
+        public bool TreatmentResult { get; set; }
         public int DiagnosisID { get; set; }
     
         public virtual Card card { get; set; }

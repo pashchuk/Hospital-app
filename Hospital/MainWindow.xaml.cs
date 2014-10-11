@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HospitalLibrary;
 
 namespace Hospital
 {
@@ -23,6 +24,31 @@ namespace Hospital
 		public MainWindow()
 		{
 			InitializeComponent();
+		}
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			HospitalEntities context = new HospitalEntities();
+			context.cards.Add(new card()
+			{
+				age = 19,
+				isAgain = false,
+				name = "Віталя",
+				note = "asdasd test",
+				sex = "male"
+			});
+			context.SaveChanges();
+			foreach (var card in context.cards)
+			{
+				textBox.Text += string.Format("{0} {1} {2} {3} {4} {5}", card.id, card.name, card.note, card.isAgain, card.sex,
+					card.age);
+				textBox.Text += "\r\n";
+			}
+		}
+
+		private void Button_Click_1(object sender, RoutedEventArgs e)
+		{
+			textBox.Clear();
 		}
 	}
 }

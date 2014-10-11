@@ -20,12 +20,12 @@ namespace HospitalLibrary
             this.sessions = new HashSet<Session>();
         }
     
-        public int CardID { get; set; }
-        public string PatientName { get; set; }
+        public int CardID { get; private set; }
+        public string Name { get; set; }
         public int PatientAge { get; set; }
-        public string Sex { get; set; }
-        public string Note { get; set; }
-        public byte[] IsAgain { get; set; }
+        public string PatientSex { get; set; }
+        public string NoteText { get; set; }
+        public bool IsAgain { get; set; }
     
         public virtual ICollection<Note> notes { get; set; }
         public virtual ICollection<Session> sessions { get; set; }

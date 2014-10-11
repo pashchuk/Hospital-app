@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8f5c4d7cf68645deb163eb8d364d654f" Name="Diagram1">
-        <EntityTypeShape EntityType="hospitalModel.Card" Width="1.5" PointX="7.25" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="hospitalModel.Diagnosis" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="hospitalModel.Group" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="hospitalModel.Note" Width="1.5" PointX="4.875" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="hospitalModel.Session" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="hospitalModel.User" Width="1.5" PointX="2.5" PointY="3.5" IsExpanded="true" />
-        <AssociationConnector Association="hospitalModel.Notes_Cars" ManuallyRouted="false" />
-        <AssociationConnector Association="hospitalModel.Sessions_Cards" ManuallyRouted="false" />
-        <AssociationConnector Association="hospitalModel.Diagnosis_GroupOwner" ManuallyRouted="false" />
-        <AssociationConnector Association="hospitalModel.Sessions_Diagnosis" ManuallyRouted="false" />
-        <AssociationConnector Association="hospitalModel.GroupOwner" ManuallyRouted="false" />
-        <AssociationConnector Association="hospitalModel.Notes_Users" ManuallyRouted="false" />
+      <Diagram DiagramId="9950a81e94f945728edd7fa495d73e19" Name="Diagram1">
+        <EntityTypeShape EntityType="HospitalModel.Card" Width="1.5" PointX="7.375" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalModel.Diagnosis" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalModel.Group" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalModel.Note" Width="1.5" PointX="4.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalModel.Session" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalModel.User" Width="1.5" PointX="2.25" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="HospitalModel.Notes_Cars" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalModel.Sessions_Cards" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalModel.Diagnosis_GroupOwner" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalModel.Sessions_Diagnosis" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalModel.GroupOwner" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalModel.Notes_Users" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

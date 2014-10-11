@@ -19,7 +19,7 @@ namespace HospitalLibrary
             this.sessions = new HashSet<Session>();
         }
     
-        public int DiagnosisID { get; set; }
+        public int DiagnosisID { get; private set; }
         public string Description { get; set; }
         public int GroupOwnerID { get; set; }
     

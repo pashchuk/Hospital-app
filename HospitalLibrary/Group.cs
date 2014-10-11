@@ -20,7 +20,7 @@ namespace HospitalLibrary
             this.groups1 = new HashSet<Group>();
         }
     
-        public int GroupID { get; set; }
+        public int GroupID { get; private set; }
         public string Name { get; set; }
         public int GroupOwnerID { get; set; }
     

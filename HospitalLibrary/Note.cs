@@ -14,10 +14,10 @@ namespace HospitalLibrary
     
     public partial class Note
     {
-        public int NoteID { get; set; }
+        public int NoteID { get; private set; }
         public int UserID { get; set; }
         public int CardID { get; set; }
-        public byte[] IsHidden { get; set; }
+        public bool IsHidden { get; set; }
         public System.DateTime Date { get; set; }
         public string NoteText { get; set; }
     
