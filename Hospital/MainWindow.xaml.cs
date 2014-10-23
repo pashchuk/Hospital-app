@@ -28,11 +28,7 @@ namespace Hospital
 
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
-			HospitalEntities context = new HospitalEntities();
-			context.users.Add(new User())
-			{
-				
-			}
+
 		}
 
 		private void Button_Click_1(object sender, RoutedEventArgs e)
