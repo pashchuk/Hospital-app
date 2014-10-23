@@ -29,20 +29,9 @@ namespace Hospital
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
 			HospitalEntities context = new HospitalEntities();
-			context.cards.Add(new card()
+			context.users.Add(new User())
 			{
-				age = 19,
-				isAgain = false,
-				name = "Віталя",
-				note = "asdasd test",
-				sex = "male"
-			});
-			context.SaveChanges();
-			foreach (var card in context.cards)
-			{
-				textBox.Text += string.Format("{0} {1} {2} {3} {4} {5}", card.id, card.name, card.note, card.isAgain, card.sex,
-					card.age);
-				textBox.Text += "\r\n";
+				
 			}
 		}
 

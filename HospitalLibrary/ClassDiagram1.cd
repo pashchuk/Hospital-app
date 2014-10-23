@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="HospitalLibrary.HospitalEntities">
+    <Position X="3.75" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>YAAAAAAAAAAAIAAAAAgQAAAAEAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>DatabaseModel.Context.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="sessions" />
+      <Property Name="notes" />
+      <Property Name="users" />
+      <Property Name="groups" />
+      <Property Name="diagnosis" />
+      <Property Name="cards" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="HospitalLibrary.Card">
+    <Position X="1" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAEAAQQECAAAAAAAAAAAAAgAIAA=</HashCode>
+      <FileName>Card.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="sessions" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="HospitalLibrary.Diagnosis">
+    <Position X="6.75" Y="0.5" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAACgIAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Diagnosis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HospitalLibrary.Group">
+    <Position X="8" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>QASAAAAAAAAAAAQAAAAQAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Group.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="diagnosis" />
+      <Property Name="groups1" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="HospitalLibrary.Note">
+    <Position X="3.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAEAAAgAACAAAAABAAAAAAgAEQA=</HashCode>
+      <FileName>Note.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HospitalLibrary.Session">
+    <Position X="6.75" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQACAAAAAAAAQAAAIAABAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Session.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HospitalLibrary.User">
+    <Position X="1" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAIAAAIAA=</HashCode>
+      <FileName>User.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="notes" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -23,6 +23,7 @@ namespace HospitalLibrary
         public string Name { get; set; }
         public int AccessLevel { get; set; }
         public string Phone { get; set; }
+        public string Password { get; set; }
     
         public virtual ICollection<Note> notes { get; set; }
     }
