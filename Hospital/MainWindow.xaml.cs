@@ -28,18 +28,7 @@ namespace Hospital
 		{
 			InitializeComponent();
 			context = new HospitalEntities();
-			context.users.Load();
-			context.notes.Load();
-			context.cards.Load();
-			context.sessions.Load();
-			context.diagnosis.Load();
-			context.groups.Load();
-			DataGrid_Users.ItemsSource = context.users.Local.ToBindingList();
-			DataGrid_Notes.ItemsSource = context.notes.Local.ToBindingList();
-			DataGrid_Cards.ItemsSource = context.cards.Local.ToBindingList();
-			DataGrid_Sessions.ItemsSource = context.sessions.Local.ToBindingList();
-			DataGrid_Diagnosis.ItemsSource = context.diagnosis.Local.ToBindingList();
-			DataGrid_Groups.ItemsSource = context.groups.Local.ToBindingList();
+			
 		}
 	}
 }
