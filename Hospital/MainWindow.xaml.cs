@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,19 +23,23 @@ namespace Hospital
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		private HospitalEntities context;
 		public MainWindow()
 		{
 			InitializeComponent();
-		}
-
-		private void Button_Click(object sender, RoutedEventArgs e)
-		{
-
-		}
-
-		private void Button_Click_1(object sender, RoutedEventArgs e)
-		{
-			textBox.Clear();
+			context = new HospitalEntities();
+			context.users.Load();
+			context.notes.Load();
+			context.cards.Load();
+			context.sessions.Load();
+			context.diagnosis.Load();
+			context.groups.Load();
+			DataGrid_Users.ItemsSource = context.users.Local.ToBindingList();
+			DataGrid_Notes.ItemsSource = context.notes.Local.ToBindingList();
+			DataGrid_Cards.ItemsSource = context.cards.Local.ToBindingList();
+			DataGrid_Sessions.ItemsSource = context.sessions.Local.ToBindingList();
+			DataGrid_Diagnosis.ItemsSource = context.diagnosis.Local.ToBindingList();
+			DataGrid_Groups.ItemsSource = context.groups.Local.ToBindingList();
 		}
 	}
 }

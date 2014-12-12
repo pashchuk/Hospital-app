@@ -1,0 +1,22 @@
+﻿<Window x:Class="Hospital.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="LoginWindow" Height="245" Width="297">
+    <Grid Background="DarkGray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Column="0" Grid.Row="0" Margin="5,10" Content="Username" FontSize="16" HorizontalAlignment="Right"/>
+        <Label Grid.Column="0" Grid.Row="1" Margin="5,10" Content="Password" FontSize="16" HorizontalAlignment="Right"/>
+        <TextBox x:Name="username" Grid.Row="0" Grid.Column="1" Style="{StaticResource OvalTextBoxStyle}" Margin="5,10" Width="120" Height="25" TextWrapping="Wrap" FontSize="14" FontFamily="Seriff" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+        <PasswordBox x:Name="password" FontSize="14" Style="{StaticResource OvalPasswordBoxStyle}" Grid.Row="1" Grid.Column="1" Background="{Binding Path=Background, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Grid}}}" HorizontalAlignment="Left" Margin="5,10" Height="25" Width="120"/>
+        <Button Grid.Row="2" Grid.Column="1" Style="{StaticResource OpacityButtonStyle}" Width="120" Content="Login" HorizontalAlignment="Left" Margin="5,10" Click="Button_Click"/>
+
+    </Grid>
+</Window>

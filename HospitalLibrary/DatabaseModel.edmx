@@ -40,7 +40,7 @@
           <Property Name="user_id" Type="int" Nullable="false" />
           <Property Name="card_id" Type="int" Nullable="false" />
           <Property Name="hide" Type="bit" Nullable="false" />
-          <Property Name="date" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date" Type="datetime" Precision="0" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="hidden_note" Type="text" />
         </EntityType>
         <EntityType Name="session">
