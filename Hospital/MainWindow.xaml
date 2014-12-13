@@ -54,58 +54,62 @@
                 <ColumnDefinition MinWidth="165"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Border Grid.ColumnSpan="2" Grid.Row="0" Style="{StaticResource BorderStyle}"/>
-            <Border Grid.ColumnSpan="2" Grid.Row="1" Style="{StaticResource BorderStyle}"/>
-            <Grid Grid.ColumnSpan="2" Grid.Row="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="28*"/>
-                    <RowDefinition Height="25*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0" Grid.Row="0"  Margin="10,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
-                    <TextBlock Style="{StaticResource Fonts}">Name:</TextBlock>
-                    <TextBlock Style="{StaticResource Fonts}" FontWeight="Normal" Text="{Binding UserName,RelativeSource={RelativeSource AncestorType=local:MainWindow}}"/>
-                </StackPanel>
-                <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
-                    <TextBlock Style="{StaticResource Fonts}">Age:</TextBlock>
-                    <TextBlock Style="{StaticResource Fonts}" FontWeight="Normal" Text="{Binding UserAge,RelativeSource={RelativeSource AncestorType=local:MainWindow}}"/>
-                </StackPanel>
-                <StackPanel Grid.Row="1" Grid.Column="0" Margin="10,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
-                    <TextBlock Style="{StaticResource Fonts}">Sex:</TextBlock>
-                    <TextBlock Style="{StaticResource Fonts}" FontWeight="Normal" Text="{Binding UserSex,RelativeSource={RelativeSource AncestorType=local:MainWindow}}"/>
-                </StackPanel>
-                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
-                    <TextBlock Style="{StaticResource Fonts}">Is again:</TextBlock>
-                    <TextBlock Style="{StaticResource Fonts}" FontWeight="Normal" Text="{Binding UserAgain,RelativeSource={RelativeSource AncestorType=local:MainWindow}}"/>
-                </StackPanel>
-            </Grid>
-            <DockPanel Grid.ColumnSpan="2" Grid.Row="1" >
-                <TextBlock Style="{StaticResource Fonts}" Margin="10,2,0,0" HorizontalAlignment="Center">Note:</TextBlock>
-                <TextBlock Style="{StaticResource Fonts}" Margin="5,2,0,0" TextWrapping="Wrap" FontWeight="Normal" Text="{Binding UserNote,RelativeSource={RelativeSource AncestorType=local:MainWindow}}"/>
-            </DockPanel>
+            <Border Grid.ColumnSpan="2" Grid.Row="0" Style="{StaticResource BorderStyle}">
+                <Grid Grid.ColumnSpan="2" Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="28*"/>
+                        <RowDefinition Height="25*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Grid.Row="0"  Margin="10,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
+                        <TextBlock Style="{StaticResource Fonts}">Name:</TextBlock>
+                        <TextBlock Style="{StaticResource Fonts}" FontWeight="Normal" Text="{Binding UserName,RelativeSource={RelativeSource AncestorType=local:MainWindow}}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                        <TextBlock Style="{StaticResource Fonts}">Age:</TextBlock>
+                        <TextBlock Style="{StaticResource Fonts}" FontWeight="Normal" Text="{Binding UserAge,RelativeSource={RelativeSource AncestorType=local:MainWindow}}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="0" Margin="10,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
+                        <TextBlock Style="{StaticResource Fonts}">Sex:</TextBlock>
+                        <TextBlock Style="{StaticResource Fonts}" FontWeight="Normal" Text="{Binding UserSex,RelativeSource={RelativeSource AncestorType=local:MainWindow}}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                        <TextBlock Style="{StaticResource Fonts}">Is again:</TextBlock>
+                        <TextBlock Style="{StaticResource Fonts}" FontWeight="Normal" Text="{Binding UserAgain,RelativeSource={RelativeSource AncestorType=local:MainWindow}}"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <Border Grid.ColumnSpan="2" Grid.Row="1" Style="{StaticResource BorderStyle}">
+                <DockPanel Grid.ColumnSpan="2" Grid.Row="1" >
+                    <TextBlock Style="{StaticResource Fonts}" Margin="10,2,0,0" HorizontalAlignment="Center">Note:</TextBlock>
+                    <TextBlock Style="{StaticResource Fonts}" Margin="5,2,0,0" TextWrapping="Wrap" FontWeight="Normal" Text="{Binding UserNote,RelativeSource={RelativeSource AncestorType=local:MainWindow}}"/>
+                </DockPanel>
+            </Border>
             <Grid Grid.Column="0" Grid.Row="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Style="{StaticResource Fonts}" HorizontalAlignment="Center">Notes</TextBlock>
-                <ItemsControl Grid.Row="1" Margin="5,0" ItemsSource="{Binding Notes,RelativeSource={RelativeSource AncestorType=local:MainWindow}}">
-                    <ItemsControl.Template>
-                        <ControlTemplate>
-                            <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                <ItemsPresenter/>
-                            </ScrollViewer>
-                        </ControlTemplate>
-                    </ItemsControl.Template>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <pages:Note Margin="0,3" NoteText="{Binding NoteText}" DateTime="{Binding Date}" AuthorName="{Binding user.Name}"/>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
+                <Border Grid.Row="1" Style="{StaticResource BorderStyle}">
+                    <ItemsControl Margin="5,0" ItemsSource="{Binding Notes,RelativeSource={RelativeSource AncestorType=local:MainWindow}}">
+                        <ItemsControl.Template>
+                            <ControlTemplate>
+                                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                    <ItemsPresenter/>
+                                </ScrollViewer>
+                            </ControlTemplate>
+                        </ItemsControl.Template>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <pages:Note Margin="0,3" NoteText="{Binding NoteText}" DateTime="{Binding Date}" AuthorName="{Binding user.Name}"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Border>
             </Grid>
             <Grid Grid.Column="1" Grid.Row="2">
                 <Grid.RowDefinitions>
@@ -113,20 +117,22 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Style="{StaticResource Fonts}" HorizontalAlignment="Center">Sessions</TextBlock>
-                <ItemsControl Grid.Row="1" Margin="5,0" ItemsSource="{Binding Sessions,RelativeSource={RelativeSource AncestorType=local:MainWindow}}">
-                    <ItemsControl.Template>
-                        <ControlTemplate>
-                            <ScrollViewer VerticalScrollBarVisibility="Hidden">
-                                <ItemsPresenter/>
-                            </ScrollViewer>
-                        </ControlTemplate>
-                    </ItemsControl.Template>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <pages:Session Margin="0,3" Diagnosis="{Binding diagnosi.Description}" Result="{Binding TreatmentResult}"/>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
+                <Border Grid.Row="1" Style="{StaticResource BorderStyle}">
+                    <ItemsControl Grid.Row="1" Margin="5,0" ItemsSource="{Binding Sessions,RelativeSource={RelativeSource AncestorType=local:MainWindow}}">
+                        <ItemsControl.Template>
+                            <ControlTemplate>
+                                <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                                    <ItemsPresenter/>
+                                </ScrollViewer>
+                            </ControlTemplate>
+                        </ItemsControl.Template>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <pages:Session Margin="0,3" Diagnosis="{Binding diagnosi.Description}" Result="{Binding TreatmentResult}"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Border>
             </Grid>
         </Grid>
     </Grid>

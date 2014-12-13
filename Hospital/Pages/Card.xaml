@@ -15,7 +15,7 @@
             <ColumnDefinition Width="7*"/>
             <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
-        <Rectangle Grid.ColumnSpan="2" Grid.RowSpan="3" Fill="DarkSlateGray" RadiusX="15" RadiusY="25"/>
+        <Rectangle x:Name="Rectangle" Grid.ColumnSpan="2" Grid.RowSpan="3" Fill="DarkSlateGray" RadiusX="15" RadiusY="25"/>
         <StackPanel Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBlock Style="{StaticResource Fonts}">Name:</TextBlock>
             <TextBlock Style="{StaticResource Fonts}" FontWeight="Normal" Text="{Binding UserName,RelativeSource={RelativeSource AncestorType=local:Card}}"/>

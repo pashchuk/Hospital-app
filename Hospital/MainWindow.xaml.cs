@@ -54,11 +54,30 @@ namespace Hospital
 			foreach (var card in cards)
 			{
 				var UIcard = new Hospital.Pages.Card(card);
-				UIcard.MouseLeftButtonDown += (sender, args) => 
-					Card = ((Hospital.Pages.Card) sender).UserCard;
+				UIcard.MouseLeftButtonDown += (sender, args) =>
+				{
+					var activeCard = (Hospital.Pages.Card) sender;
+					Card = activeCard.UserCard;
+					activeCard.Rectangle.Fill = new SolidColorBrush(Color.FromArgb(255, 110, 130, 130));
+					activeCard.MouseLeave -= UIcard_MouseLeave;
+					if (_prevCard != null)
+					{
+						_prevCard.Rectangle.Fill = new SolidColorBrush(Color.FromArgb(255, 47, 79, 79));
+						_prevCard.MouseLeave += UIcard_MouseLeave;
+					}
+					_prevCard = activeCard;
+				}; 
+				UIcard.MouseEnter += (sender, args) =>
+					((Hospital.Pages.Card) sender).Rectangle.Fill = new SolidColorBrush(Color.FromArgb(255, 80, 100, 100));
+				UIcard.MouseLeave += UIcard_MouseLeave;
 				list.Add(UIcard);
 			}
 			Cards = list;
+		}
+
+		private void UIcard_MouseLeave(object sender, MouseEventArgs e)
+		{
+			((Hospital.Pages.Card) sender).Rectangle.Fill = new SolidColorBrush(Color.FromArgb(255, 47, 79, 79));
 		}
 
 		#region Dependendency prop
