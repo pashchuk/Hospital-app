@@ -33,6 +33,7 @@ namespace Hospital
 			{
 				_card = value;
 				UserName = value.Name;
+				UserSex = value.PatientSex;
 				UserAge = value.PatientAge;
 				UserAgain = value.IsAgain ? "Again" : "New";
 				UserNote = value.NoteText;
@@ -45,13 +46,15 @@ namespace Hospital
 			context = new HospitalEntities();
 			context.cards.Load();
 			var cards = context.cards.ToList();
+			var list = new List<Hospital.Pages.Card>();
 			foreach (var card in cards)
 			{
 				var UIcard = new Hospital.Pages.Card(card);
 				UIcard.MouseLeftButtonDown += (sender, args) => 
 					Card = ((Hospital.Pages.Card) sender).UserCard;
-				CardContainer.Children.Add(UIcard);
+				list.Add(UIcard);
 			}
+			Cards = list;
 		}
 
 		#region Dependendency prop
@@ -99,6 +102,15 @@ namespace Hospital
 		{
 			get { return (string) GetValue(UserNoteProperty); }
 			set { SetValue(UserNoteProperty, value); }
+		}
+
+		public static readonly DependencyProperty CardsProperty = DependencyProperty.Register(
+			"Cards", typeof (List<Hospital.Pages.Card>), typeof (MainWindow), new PropertyMetadata(default(List<Hospital.Pages.Card>)));
+
+		public List<Hospital.Pages.Card> Cards
+		{
+			get { return (List<Hospital.Pages.Card>) GetValue(CardsProperty); }
+			set { SetValue(CardsProperty, value); }
 		}
 		#endregion
 	}

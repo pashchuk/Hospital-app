@@ -166,6 +166,7 @@
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="Foreground" Value="Silver"/>
         </Style>
         
     </Application.Resources>

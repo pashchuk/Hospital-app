@@ -21,7 +21,8 @@ namespace Hospital.Pages
 	/// </summary>
 	public partial class Card : UserControl
 	{
-		public HospitalLibrary.Card UserCard { get; private set; }
+		public HospitalLibrary.Card UserCard { get; set; }
+
 		public Card(HospitalLibrary.Card userCard)
 		{
 			InitializeComponent();
@@ -31,7 +32,10 @@ namespace Hospital.Pages
 			UserSex = UserCard.PatientSex.ToLower() == "male" ? "Man" : "Woman";
 		}
 
-		public static readonly DependencyProperty UserNameProperty = DependencyProperty.Register(
+		public Card()
+		{ }
+
+	public static readonly DependencyProperty UserNameProperty = DependencyProperty.Register(
 			"UserName", typeof (String), typeof (Card), new PropertyMetadata(default(String)));
 
 		public String UserName
