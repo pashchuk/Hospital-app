@@ -42,7 +42,7 @@ namespace Hospital
 				MessageBox.Show("Incorrect username or password");
 			return;
 			}
-			var window = new MainWindow();
+			var window = new MainWindow(user.Name);
 			window.Show();
 			this.Hide();
 		}

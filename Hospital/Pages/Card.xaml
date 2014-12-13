@@ -1,13 +1,11 @@
 ﻿<UserControl x:Class="Hospital.Pages.Card"
-             Name="CardControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Hospital.Pages"
-             mc:Ignorable="d" d:DesignWidth="150"
-             Height="40" Width="150">
-    <Grid x:Name="Grid" Background="Transparent">
+             mc:Ignorable="d" d:DesignWidth="150">
+    <Grid Background="Transparent" Margin="0,2">
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="Auto"/>
@@ -17,8 +15,7 @@
             <ColumnDefinition Width="7*"/>
             <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
-        <Rectangle Grid.ColumnSpan="2" Grid.RowSpan="3" Fill="WhiteSmoke" RadiusX="15" RadiusY="25" Margin="0,0,0,4"/>
-        <Line Stretch="Fill" Stroke="Black" Width="150" Margin="0,20,0,0" StrokeThickness="2"/>
+        <Rectangle Grid.ColumnSpan="2" Grid.RowSpan="3" Fill="DarkSlateGray" RadiusX="15" RadiusY="25"/>
         <StackPanel Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBlock Style="{StaticResource Fonts}">Name:</TextBlock>
             <TextBlock Style="{StaticResource Fonts}" FontWeight="Normal" Text="{Binding UserName,RelativeSource={RelativeSource AncestorType=local:Card}}"/>

@@ -24,6 +24,7 @@ namespace Hospital
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		private Hospital.Pages.Card _prevCard;
 		private HospitalEntities context;
 		private HospitalLibrary.Card _card;
 		public HospitalLibrary.Card Card
@@ -37,12 +38,15 @@ namespace Hospital
 				UserAge = value.PatientAge;
 				UserAgain = value.IsAgain ? "Again" : "New";
 				UserNote = value.NoteText;
+				Notes = value.notes.ToList();
+				Sessions = value.sessions.ToList();
 			}
 		}
 
-		public MainWindow()
+		public MainWindow(string userName)
 		{
 			InitializeComponent();
+			this.userName.Text = userName;
 			context = new HospitalEntities();
 			context.cards.Load();
 			var cards = context.cards.ToList();
@@ -111,6 +115,24 @@ namespace Hospital
 		{
 			get { return (List<Hospital.Pages.Card>) GetValue(CardsProperty); }
 			set { SetValue(CardsProperty, value); }
+		}
+
+		public static readonly DependencyProperty NotesProperty = DependencyProperty.Register(
+			"Notes", typeof (List<HospitalLibrary.Note>), typeof (MainWindow), new PropertyMetadata(default(List<HospitalLibrary.Note>)));
+
+		public List<HospitalLibrary.Note> Notes
+		{
+			get { return (List<HospitalLibrary.Note>) GetValue(NotesProperty); }
+			set { SetValue(NotesProperty, value); }
+		}
+
+		public static readonly DependencyProperty SessionsProperty = DependencyProperty.Register(
+			"Sessions", typeof (List<HospitalLibrary.Session>), typeof (MainWindow), new PropertyMetadata(default(List<HospitalLibrary.Session>)));
+
+		public List<HospitalLibrary.Session> Sessions
+		{
+			get { return (List<HospitalLibrary.Session>) GetValue(SessionsProperty); }
+			set { SetValue(SessionsProperty, value); }
 		}
 		#endregion
 	}
