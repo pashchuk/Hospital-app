@@ -168,7 +168,14 @@
             <Setter Property="FontWeight" Value="DemiBold"/>
             <Setter Property="Foreground" Value="Silver"/>
         </Style>
-        
+
+        <Style x:Key="LinkFonts" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="Silver"/>
+        </Style>
+
         <Style x:Key="BorderStyle" TargetType="{x:Type Border}">
             <Setter Property="Margin" Value="1"/>
             <Setter Property="CornerRadius" Value="10"/>
@@ -176,5 +183,32 @@
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
         
+        <Style x:Key="LinkBorder" TargetType="{x:Type Border}">
+            <Setter Property="Margin" Value="2,0"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="BorderBrush" Value="AliceBlue"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Background" Value="SlateGray"/>
+        </Style>
+
+        <Style x:Key="LinkHyperLink" TargetType="{x:Type Hyperlink}">
+            <Setter Property="Foreground" Value="LightSkyBlue"/>
+            <Setter Property="TextDecorations" Value="Underline"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="WhiteSmoke"/>
+                </Trigger>
+                <Trigger Property="IsMouseDirectlyOver" Value="True">
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="True">
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
     </Application.Resources>
 </Application>
