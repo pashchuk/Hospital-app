@@ -155,5 +155,30 @@ namespace Hospital
 			set { SetValue(SessionsProperty, value); }
 		}
 		#endregion
+
+		#region OnClick events
+		private void AddCard_OnClick(object sender, RoutedEventArgs e)
+		{
+			var cardWindow = new Hospital.Windows.Card();
+			cardWindow.Show();
+		}
+		private void ModifyCard_OnClick(object sender, RoutedEventArgs e)
+		{
+
+		}
+		private void AddNote_OnClick(object sender, RoutedEventArgs e)
+		{
+
+		}
+		private void ModifyNote_OnClick(object sender, RoutedEventArgs e)
+		{
+
+		}
+		private void Diagnosis_OnClick(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		#endregion
 	}
 }
