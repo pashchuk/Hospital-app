@@ -47,7 +47,7 @@ namespace Hospital
 		{
 			InitializeComponent();
 			this.userName.Text = userName;
-			context = new HospitalEntities();
+			context = HospitalEntities.GetEntity();
 			context.cards.Load();
 			var cards = context.cards.ToList();
 			var list = new List<Hospital.Pages.Card>();

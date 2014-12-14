@@ -28,7 +28,7 @@ namespace Hospital
 
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
-			HospitalEntities context = new HospitalEntities();
+			var context = HospitalEntities.GetEntity();
 //			context.users.Load();
 			var users = context.GetUsersByName(username.Text);
 			if (!users.Any())
