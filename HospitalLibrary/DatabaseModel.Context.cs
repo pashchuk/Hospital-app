@@ -15,10 +15,21 @@ namespace HospitalLibrary
     
     public partial class HospitalEntities : DbContext
     {
+	    private static volatile HospitalEntities _entity;
+	    private static object _lockObjeck = new object();
         public HospitalEntities()
             : base("name=HospitalEntities")
         {
         }
+
+	    public static HospitalEntities GetEntity()
+	    {
+		    if (_entity == null)
+			    lock (_lockObjeck)
+				    if (_entity == null)
+					    _entity = new HospitalEntities();
+		    return _entity;
+	    }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
