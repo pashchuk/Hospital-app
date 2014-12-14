@@ -92,14 +92,14 @@
         </Style>
 
         <Style TargetType="{x:Type Button}" x:Key="OpacityButtonStyle">
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="Silver"/>
             <Setter Property="Background">
                 <Setter.Value>
                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                        <GradientStop Color="#FF2778BB" Offset="0.51"/>
-                        <GradientStop Color="#FF2683C5" Offset="0.48"/>
-                        <GradientStop Color="#FF8CD4FF" Offset="1"/>
-                        <GradientStop Color="#FF1973AE" Offset="0.49"/>
+                        <GradientStop Color="#FF2f4f4f" Offset="0.51"/>
+                        <GradientStop Color="#FF506464" Offset="0.48"/>
+                        <GradientStop Color="#FF607070" Offset="1"/>
+                        <GradientStop Color="#FF698080" Offset="0.49"/>
                     </LinearGradientBrush>
                 </Setter.Value>
             </Setter>
@@ -109,7 +109,7 @@
             <Setter Property="Height" Value="30"/>
             <Setter Property="MinWidth" Value="20"/>
             <Setter Property="FontSize" Value="13"/>
-            <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+<!--            <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>-->
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -119,8 +119,8 @@
                                 <Rectangle.Fill>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                         <GradientStop Color="#11FFFFFF" Offset="1"/>
-                                        <GradientStop Color="LightSkyBlue" Offset="0.2"/>
-                                        <GradientStop Color="#B2FFFFFF" Offset="0"/>
+                                        <GradientStop Color="#ff858585" Offset="0.2"/>
+                                        <GradientStop Color="#B2CCCCCC" Offset="0"/>
                                     </LinearGradientBrush>
                                 </Rectangle.Fill>
                             </Rectangle>
@@ -156,7 +156,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
+
         <Style x:Key="OvalPasswordBoxStyle" TargetType="{x:Type PasswordBox}">
             <Setter Property="Template">
                 <Setter.Value>
