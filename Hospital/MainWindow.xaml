@@ -18,12 +18,24 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Horizontal">
                 <TextBlock Style="{StaticResource Fonts}" HorizontalAlignment="Left" Text="User Name:" VerticalAlignment="Center" Margin="10,0"/>
                 <TextBlock x:Name="userName" Style="{StaticResource Fonts}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Style="{StaticResource Fonts}" Margin="10,0" VerticalAlignment="Center">
+                    <Hyperlink >Add Card</Hyperlink>
+                </TextBlock>
+                <TextBlock Style="{StaticResource Fonts}" Margin="10,0" VerticalAlignment="Center">
+                    <Hyperlink >Add Note</Hyperlink>
+                </TextBlock>
+                <TextBlock Style="{StaticResource Fonts}" Margin="10,0" VerticalAlignment="Center">
+                    <Hyperlink >Diagnosis</Hyperlink>
+                </TextBlock>
+            </StackPanel>
+            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
                 <Label VerticalAlignment="Center" FontSize="14" FontFamily="Callibri" Foreground="Black" FontWeight="DemiBold">Search</Label>
                 <TextBox Style="{StaticResource OvalTextBoxStyle}" VerticalContentAlignment="Center" Foreground="Silver" Width="100" Height="30"/>
             </StackPanel>
