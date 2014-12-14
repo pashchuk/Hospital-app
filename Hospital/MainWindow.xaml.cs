@@ -73,6 +73,7 @@ namespace Hospital
 				list.Add(UIcard);
 			}
 			Cards = list;
+			this.Closed += (sender, args) => Application.Current.Shutdown();
 		}
 
 		private void UIcard_MouseLeave(object sender, MouseEventArgs e)
