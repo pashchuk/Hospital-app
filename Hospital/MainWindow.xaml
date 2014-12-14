@@ -28,29 +28,29 @@
                 <Border Style="{StaticResource LinkBorder}">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Style="{StaticResource LinkFonts}" Margin="5,0" VerticalAlignment="Center">
-                            <Hyperlink Style="{StaticResource LinkHyperLink}">Add Card</Hyperlink>
+                            <Hyperlink Style="{StaticResource LinkHyperLink}" Click="AddCard_OnClick">Add Card</Hyperlink>
                         </TextBlock>
                         <Line Y1="0" Y2="10" Stretch="Fill" Stroke="Silver" StrokeThickness="1"/>
                         <TextBlock Style="{StaticResource LinkFonts}" Margin="5,0" VerticalAlignment="Center">
-                            <Hyperlink Style="{StaticResource LinkHyperLink}">Modify Card</Hyperlink>
+                            <Hyperlink Style="{StaticResource LinkHyperLink}" Click="ModifyCard_OnClick">Modify Card</Hyperlink>
                         </TextBlock>
                     </StackPanel>
                 </Border>
                 <Border Style="{StaticResource LinkBorder}">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Style="{StaticResource LinkFonts}" Margin="5,0" VerticalAlignment="Center">
-                            <Hyperlink Style="{StaticResource LinkHyperLink}">Add Note</Hyperlink>
+                            <Hyperlink Style="{StaticResource LinkHyperLink}" Click="AddNote_OnClick">Add Note</Hyperlink>
                         </TextBlock>
                         <Line Y1="0" Y2="10" Stretch="Fill" Stroke="Silver" StrokeThickness="1"/>
                         <TextBlock Style="{StaticResource LinkFonts}" Margin="5,0" VerticalAlignment="Center">
-                            <Hyperlink Style="{StaticResource LinkHyperLink}">Modify Note</Hyperlink>
+                            <Hyperlink Style="{StaticResource LinkHyperLink}" Click="ModifyNote_OnClick">Modify Note</Hyperlink>
                         </TextBlock>
                     </StackPanel>
                 </Border>
                 <Border Style="{StaticResource LinkBorder}">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Style="{StaticResource LinkFonts}" Margin="5,0" VerticalAlignment="Center">
-                            <Hyperlink Style="{StaticResource LinkHyperLink}" >Diagnosis</Hyperlink>
+                            <Hyperlink Style="{StaticResource LinkHyperLink}" Click="Diagnosis_OnClick">Diagnosis</Hyperlink>
                         </TextBlock>
                     </StackPanel>
                 </Border>
