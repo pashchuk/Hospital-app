@@ -25,15 +25,36 @@
                 <TextBlock x:Name="userName" Style="{StaticResource Fonts}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock Style="{StaticResource Fonts}" Margin="10,0" VerticalAlignment="Center">
-                    <Hyperlink >Add Card</Hyperlink>
-                </TextBlock>
-                <TextBlock Style="{StaticResource Fonts}" Margin="10,0" VerticalAlignment="Center">
-                    <Hyperlink >Add Note</Hyperlink>
-                </TextBlock>
-                <TextBlock Style="{StaticResource Fonts}" Margin="10,0" VerticalAlignment="Center">
-                    <Hyperlink >Diagnosis</Hyperlink>
-                </TextBlock>
+                <Border Style="{StaticResource LinkBorder}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Style="{StaticResource LinkFonts}" Margin="5,0" VerticalAlignment="Center">
+                            <Hyperlink Style="{StaticResource LinkHyperLink}">Add Card</Hyperlink>
+                        </TextBlock>
+                        <Line Y1="0" Y2="10" Stretch="Fill" Stroke="Silver" StrokeThickness="1"/>
+                        <TextBlock Style="{StaticResource LinkFonts}" Margin="5,0" VerticalAlignment="Center">
+                            <Hyperlink Style="{StaticResource LinkHyperLink}">Modify Card</Hyperlink>
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+                <Border Style="{StaticResource LinkBorder}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Style="{StaticResource LinkFonts}" Margin="5,0" VerticalAlignment="Center">
+                            <Hyperlink Style="{StaticResource LinkHyperLink}">Add Note</Hyperlink>
+                        </TextBlock>
+                        <Line Y1="0" Y2="10" Stretch="Fill" Stroke="Silver" StrokeThickness="1"/>
+                        <TextBlock Style="{StaticResource LinkFonts}" Margin="5,0" VerticalAlignment="Center">
+                            <Hyperlink Style="{StaticResource LinkHyperLink}">Modify Note</Hyperlink>
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+                <Border Style="{StaticResource LinkBorder}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Style="{StaticResource LinkFonts}" Margin="5,0" VerticalAlignment="Center">
+                            <Hyperlink Style="{StaticResource LinkHyperLink}" >Diagnosis</Hyperlink>
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+                
             </StackPanel>
             <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
                 <Label VerticalAlignment="Center" FontSize="14" FontFamily="Callibri" Foreground="Black" FontWeight="DemiBold">Search</Label>
