@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
+using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,6 +25,8 @@ namespace Hospital
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		private static MainWindow _thisWindow;
+		public static MainWindow ThisWindow { get { return _thisWindow; } }
 		private Hospital.Pages.Card _prevCard;
 		private HospitalEntities context;
 		private HospitalLibrary.Card _card;
@@ -49,9 +52,10 @@ namespace Hospital
 			context = HospitalEntities.GetEntity();
 			UpdateCards();
 			this.Closed += (sender, args) => Application.Current.Shutdown();
+			_thisWindow = this;
 		}
 
-		private void UpdateCards()
+		public void UpdateCards()
 		{
 			context.cards.Load();
 			var cards = context.cards.ToList();
