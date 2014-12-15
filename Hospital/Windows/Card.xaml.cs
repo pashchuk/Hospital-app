@@ -20,11 +20,24 @@ namespace Hospital.Windows
 	/// </summary>
 	public partial class Card : Window
 	{
+		private WindowState _state;
+		private int _modifyCardID;
 		public Card()
 		{
 			InitializeComponent();
+			_state = WindowState.Create;
 		}
 
+		public Card(HospitalLibrary.Card card, WindowState state) : this()
+		{
+			cardName.Text = card.Name;
+			cardAge.Text = card.PatientAge.ToString();
+			cardSex.SelectedIndex = card.PatientSex == "male" ? 0 : 1;
+			cardAgain.SelectedIndex = card.IsAgain ? 1 : 0;
+			cardNote.Text = card.NoteText;
+			_modifyCardID = card.CardID;
+			_state = state;
+		}
 		private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 
@@ -58,16 +71,44 @@ namespace Hospital.Windows
 				return;
 			}
 			var entity = HospitalEntities.GetEntity();
-			entity.cards.Add(new HospitalLibrary.Card()
+			switch (_state)
 			{
-				Name = cardName.Text,
-				PatientAge = int.Parse(cardAge.Text),
-				PatientSex = cardSex.Text,
-				IsAgain = cardAgain.Text == "New",
-				NoteText = cardNote.Text
-			});
+				case WindowState.Create:
+					try
+					{
+						entity.cards.Add(new HospitalLibrary.Card()
+						{
+							Name = cardName.Text,
+							PatientAge = int.Parse(cardAge.Text),
+							PatientSex = cardSex.Text,
+							IsAgain = cardAgain.Text == "New",
+							NoteText = cardNote.Text
+						});
+					}
+					catch (FormatException ex)
+					{
+						MessageBox.Show("Incorrect format");
+						return;
+					}
+					break;
+				case WindowState.Modify:
+					var card = entity.cards.Find(_modifyCardID);
+					card.Name = cardName.Text;
+					card.PatientAge = int.Parse(cardAge.Text);
+					card.PatientSex = cardSex.Text;
+					card.IsAgain = cardAgain.Text == "New";
+					card.NoteText = cardNote.Text;
+					break;
+				default:
+					break;
+			}
 			entity.SaveChanges();
 			this.Close();
+		}
+
+		public new enum WindowState
+		{
+			Create,Modify
 		}
 	}
 }
