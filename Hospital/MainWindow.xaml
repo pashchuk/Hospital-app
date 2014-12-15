@@ -54,10 +54,10 @@
                         </TextBlock>
                     </StackPanel>
                 </Border>
-                
+
             </StackPanel>
             <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Label VerticalAlignment="Center" FontSize="14" FontFamily="Callibri" Foreground="Black" FontWeight="DemiBold">Search</Label>
+                <Label VerticalAlignment="Center" FontSize="14" FontFamily="Callibri" Foreground="Silver" FontWeight="DemiBold" Content="Search" Margin="0,2"/>
                 <TextBox Style="{StaticResource OvalTextBoxStyle}" VerticalContentAlignment="Center" Foreground="Silver" Width="100" Height="30"/>
             </StackPanel>
         </Grid>

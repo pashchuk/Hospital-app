@@ -42,12 +42,17 @@ namespace Hospital
 				Sessions = value.sessions.ToList();
 			}
 		}
-
 		public MainWindow(string userName)
 		{
 			InitializeComponent();
 			this.userName.Text = userName;
 			context = HospitalEntities.GetEntity();
+			UpdateCards();
+			this.Closed += (sender, args) => Application.Current.Shutdown();
+		}
+
+		private void UpdateCards()
+		{
 			context.cards.Load();
 			var cards = context.cards.ToList();
 			var list = new List<Hospital.Pages.Card>();
@@ -66,14 +71,13 @@ namespace Hospital
 						_prevCard.MouseLeave += UIcard_MouseLeave;
 					}
 					_prevCard = activeCard;
-				}; 
+				};
 				UIcard.MouseEnter += (sender, args) =>
 					((Hospital.Pages.Card) sender).Rectangle.Fill = new SolidColorBrush(Color.FromArgb(255, 80, 100, 100));
 				UIcard.MouseLeave += UIcard_MouseLeave;
 				list.Add(UIcard);
 			}
 			Cards = list;
-			this.Closed += (sender, args) => Application.Current.Shutdown();
 		}
 
 		private void UIcard_MouseLeave(object sender, MouseEventArgs e)
@@ -160,7 +164,8 @@ namespace Hospital
 		private void AddCard_OnClick(object sender, RoutedEventArgs e)
 		{
 			var cardWindow = new Hospital.Windows.Card();
-			cardWindow.Show();
+			cardWindow.ShowDialog();
+			UpdateCards();
 		}
 		private void ModifyCard_OnClick(object sender, RoutedEventArgs e)
 		{
