@@ -6,6 +6,20 @@
              xmlns:local="clr-namespace:Hospital.Pages"
              mc:Ignorable="d" d:DesignWidth="150">
     <Grid Background="Transparent" Margin="0,2">
+        <Grid.ContextMenu>
+            <ContextMenu Style="{StaticResource ContextMenuStyle}">
+                <MenuItem Click="Modify_OnClick" Style="{StaticResource MenuItemStyle}" Header="Modify">
+                    <MenuItem.Icon>
+                        <Image Source="/resources/images/modify.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Click="Delete_OnClick" Style="{StaticResource MenuItemStyle}" Header="Delete">
+                    <MenuItem.Icon>
+                        <Image Source="/resources/images/trash.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </ContextMenu>
+        </Grid.ContextMenu>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="Auto"/>

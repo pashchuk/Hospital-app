@@ -32,6 +32,8 @@ namespace Hospital.Pages
 			UserSex = UserCard.PatientSex.ToLower() == "male" ? "Man" : "Woman";
 		}
 
+
+
 		public Card()
 		{ }
 
@@ -60,6 +62,19 @@ namespace Hospital.Pages
 		{
 			get { return (String) GetValue(UserSexProperty); }
 			set { SetValue(UserSexProperty, value); }
+		}
+
+		private void Modify_OnClick(object sender, RoutedEventArgs e)
+		{
+			var cardWindow = new Hospital.Windows.Card(UserCard, Windows.Card.WindowState.Modify);
+			cardWindow.Show();
+		}
+
+		private void Delete_OnClick(object sender, RoutedEventArgs e)
+		{
+			HospitalEntities.GetEntity().cards.Remove(UserCard);
+			HospitalEntities.GetEntity().SaveChanges();
+			MainWindow.ThisWindow.UpdateCards();
 		}
 	}
 }
