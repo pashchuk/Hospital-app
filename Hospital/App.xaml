@@ -218,5 +218,41 @@
             </Style.Triggers>
         </Style>
 
+        <Style x:Key="ContextMenuStyle" TargetType="{x:Type ContextMenu}">
+        <Setter Property="SnapsToDevicePixels"
+          Value="True" />
+        <Setter Property="OverridesDefaultStyle"
+          Value="True" />
+        <Setter Property="Grid.IsSharedSizeScope"
+          Value="true" />
+        <Setter Property="HasDropShadow"
+          Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ContextMenu}">
+                    <Border x:Name="Border"
+                Background="#FF707070"
+                BorderThickness="1">
+                        <Border.BorderBrush>
+                            <SolidColorBrush Color="#ff909090" />
+                        </Border.BorderBrush>
+                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HasDropShadow" Value="true">
+                            <Setter TargetName="Border" Property="Padding" Value="0,3,0,3" />
+                            <Setter TargetName="Border" Property="CornerRadius" Value="4" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        </Style>
+        
+        <Style x:Key="MenuItemStyle" TargetType="MenuItem">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+        </Style>
     </Application.Resources>
 </Application>
