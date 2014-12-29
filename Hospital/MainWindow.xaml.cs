@@ -30,6 +30,7 @@ namespace Hospital
 		private Hospital.Pages.Card _prevCard;
 		private HospitalEntities context;
 		private HospitalLibrary.Card _card;
+		private User _activeUser;
 		public HospitalLibrary.Card Card
 		{
 			get { return _card; }
@@ -45,10 +46,11 @@ namespace Hospital
 				Sessions = value.sessions.ToList();
 			}
 		}
-		public MainWindow(string userName)
+		public MainWindow(User user)
 		{
 			InitializeComponent();
-			this.userName.Text = userName;
+			_activeUser = user;
+			this.userName.Text = user.Name;
 			context = HospitalEntities.GetEntity();
 			UpdateCards();
 			this.Closed += (sender, args) => Application.Current.Shutdown();
@@ -174,11 +176,13 @@ namespace Hospital
 		private void ModifyCard_OnClick(object sender, RoutedEventArgs e)
 		{
 			var cardWindow = new Hospital.Windows.Card(_card, Windows.Card.WindowState.Modify);
-			cardWindow.Show();
+			cardWindow.ShowDialog();
 		}
 		private void AddNote_OnClick(object sender, RoutedEventArgs e)
 		{
-
+			var noteWindow = new Hospital.Windows.Note(_card, _activeUser.UserID);
+			noteWindow.ShowDialog();
+			UpdateCards();
 		}
 		private void ModifyNote_OnClick(object sender, RoutedEventArgs e)
 		{

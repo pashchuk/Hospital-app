@@ -40,9 +40,9 @@ namespace Hospital
 			if (user.Password != password.Password)
 			{
 				MessageBox.Show("Incorrect username or password");
-			return;
+				return;
 			}
-			var window = new MainWindow(user.Name);
+			var window = new MainWindow(user);
 			window.Show();
 			this.Hide();
 		}
