@@ -173,7 +173,8 @@ namespace Hospital
 		}
 		private void ModifyCard_OnClick(object sender, RoutedEventArgs e)
 		{
-
+			var cardWindow = new Hospital.Windows.Card(_card, Windows.Card.WindowState.Modify);
+			cardWindow.Show();
 		}
 		private void AddNote_OnClick(object sender, RoutedEventArgs e)
 		{
